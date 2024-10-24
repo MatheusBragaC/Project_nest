@@ -1,10 +1,10 @@
 -- CreateTable
 CREATE TABLE `usuarios` (
     `idusuarios` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-    `name` VARCHAR(63) NOT NULL,
-    `email` VARCHAR(217) NOT NULL,
+    `name` VARCHAR(70) NOT NULL,
+    `email` VARCHAR(80) NOT NULL,
     `password` VARCHAR(127) NOT NULL,
-    `birthAt` DATE NOT NULL,
+    `role` INTEGER NOT NULL DEFAULT 1,
     `createdAt` TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
     `updatedAt` TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
 
