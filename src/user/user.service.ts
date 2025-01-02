@@ -33,7 +33,7 @@ export class UserService
             }
         })
     }
-
+    
     async update(idusuarios: number, {email, name, password, birthAt, role}: UpdatePutUserDTO)
     {
 

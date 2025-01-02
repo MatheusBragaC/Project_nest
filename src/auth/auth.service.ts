@@ -8,7 +8,7 @@ import { MailerService } from "@nestjs-modules/mailer";
 
 @Injectable()
 export class AuthService
-{x
+{
     private issuer = "login"
     private audicente = "users"
 
