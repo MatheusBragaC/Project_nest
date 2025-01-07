@@ -4,8 +4,6 @@ export const User = createParamDecorator((filter: string, context: ExecutionCont
 {
     const request = context.switchToHttp().getRequest();
 
-    
-    
     if (request.usuario)
     {
         return request.usuario

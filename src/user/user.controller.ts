@@ -34,7 +34,6 @@ export class UserController
     @Get(":id")
     async show(@ParamId() idusuarios: number)
     {
-        console.log({idusuarios})
         return this.usersService.show(idusuarios);
     }
     
