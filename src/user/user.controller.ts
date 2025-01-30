@@ -25,11 +25,11 @@ export class UserController
         return this.usersService.create(data);
     }
 
-   @Get()
-   async list()
-   {
-    return this.usersService.list();
-   }
+    @Get()
+    async list()
+    {
+     return this.usersService.list();
+    }
     
     @Get(":id")
     async show(@ParamId() idusuarios: number)
