@@ -9,8 +9,8 @@ import { Role } from "src/enums/role.enum";
 import { Roles } from "src/decorators/role.decorator";
 import { RoleGuard } from "src/guards/role.guard";
 import { AuthGuard } from "src/guards/auth.guard";
+import { Public } from "src/decorators/public.decorator";
 
-@Roles(Role.Admin)
 @UseGuards(AuthGuard, RoleGuard)
 @UseInterceptors(LogInterceptor)
 @Controller("users")
@@ -19,12 +19,14 @@ export class UserController
 
     constructor(private readonly usersService: UserService){}
 
-    @Post()
+    @Public()
+    @Post("register")
     async create(@Body() data: CreateUserDTO)
     {
         return this.usersService.create(data);
     }
 
+    @Roles(Role.Admin)
     @Get()
     async list()
     {

@@ -11,9 +11,9 @@ import { RoleGuard } from "src/guards/role.guard";
 import { FileInterceptor } from "@nestjs/platform-express";
 import { join } from "path";
 import { FileService } from "src/file/file.service";
+import { Public } from "src/decorators/public.decorator";
 
-
-@UseGuards(RoleGuard)
+@Public()
 @Controller("auth")
 export class AuthController
 {
@@ -23,6 +23,7 @@ export class AuthController
         private readonly authService: AuthService,
         private readonly fileService: FileService
     ) {}
+    
 
     @Post('login')
     async login(@Body() {email, password}: AuthLoginDTO){
@@ -44,12 +45,6 @@ export class AuthController
         return this.authService.reset(password, token)
     }
 
-    @UseGuards(AuthGuard)
-    @Post('me')
-    async me(@User() usuario) {
-        
-        return {usuario};
-    }
 
     @UseInterceptors(FileInterceptor("file"))
     @UseGuards(AuthGuard)

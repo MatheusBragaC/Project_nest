@@ -7,6 +7,8 @@ import { ThrottlerModule } from '@nestjs/throttler'
 import { ConfigModule } from "@nestjs/config"
 import { MailerModule } from '@nestjs-modules/mailer';
 import { PugAdapter } from '@nestjs-modules/mailer/dist/adapters/pug.adapter';
+import { APP_GUARD } from '@nestjs/core';
+import { AuthGuard } from './guards/auth.guard';
 
 
 @Module({
@@ -37,7 +39,10 @@ import { PugAdapter } from '@nestjs-modules/mailer/dist/adapters/pug.adapter';
     }),
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, {
+    provide: APP_GUARD,
+    useClass: AuthGuard,
+  },],
   exports: [AppService],
 })
 export class AppModule {}
