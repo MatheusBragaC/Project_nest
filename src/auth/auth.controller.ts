@@ -1,4 +1,4 @@
-import { BadRequestException, Body, Controller, FileTypeValidator, ParseFilePipe, Post, UploadedFile, UseGuards, UseInterceptors } from "@nestjs/common";
+import { BadRequestException, Body, Controller, FileTypeValidator, HttpCode, HttpStatus, ParseFilePipe, Post, UploadedFile, UseGuards, UseInterceptors } from "@nestjs/common";
 import { AuthLoginDTO } from "./dto/auth.login.dto";
 import { AuthRegisterDTO } from "./dto/auth.register.dto";
 import { AuthForgetDTO } from "./dto/auth.forget.dto";
@@ -26,6 +26,7 @@ export class AuthController
     
 
     @Post('login')
+    @HttpCode(HttpStatus.OK)
     async login(@Body() {email, password}: AuthLoginDTO){
         return this.authService.login(email, password)
     }
