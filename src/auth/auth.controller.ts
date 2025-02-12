@@ -7,7 +7,6 @@ import { UserService } from "src/user/user.service";
 import { AuthService } from "./auth.service";
 import { AuthGuard } from "src/guards/auth.guard";
 import { User } from "src/decorators/user.decorator";
-import { RoleGuard } from "src/guards/role.guard";
 import { FileInterceptor } from "@nestjs/platform-express";
 import { join } from "path";
 import { FileService } from "src/file/file.service";
@@ -19,7 +18,6 @@ export class AuthController
 {
 
     constructor(
-        private readonly userService: UserService, 
         private readonly authService: AuthService,
         private readonly fileService: FileService
     ) {}
