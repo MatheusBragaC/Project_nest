@@ -3,17 +3,16 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
-import { ThrottlerModule } from '@nestjs/throttler'
-import { ConfigModule } from "@nestjs/config"
+import { ThrottlerModule } from '@nestjs/throttler';
+import { ConfigModule } from '@nestjs/config';
 import { MailerModule } from '@nestjs-modules/mailer';
 import { PugAdapter } from '@nestjs-modules/mailer/dist/adapters/pug.adapter';
 import { APP_GUARD } from '@nestjs/core';
 import { AuthGuard } from './guards/auth.guard';
 
-
 @Module({
   imports: [
-    forwardRef(() => UserModule), 
+    forwardRef(() => UserModule),
     forwardRef(() => AuthModule),
     ConfigModule.forRoot(),
     ThrottlerModule.forRoot(),
@@ -23,8 +22,8 @@ import { AuthGuard } from './guards/auth.guard';
         port: 587,
         auth: {
           user: 'meghan94@ethereal.email',
-          pass: 'WQz1tyVNVsB3tM6XK4'
-    }
+          pass: 'WQz1tyVNVsB3tM6XK4',
+        },
       },
       defaults: {
         from: '"nest-modules" <meghan94@ethereal.email>',
@@ -39,10 +38,13 @@ import { AuthGuard } from './guards/auth.guard';
     }),
   ],
   controllers: [AppController],
-  providers: [AppService, {
-    provide: APP_GUARD,
-    useClass: AuthGuard,
-  },],
+  providers: [
+    AppService,
+    {
+      provide: APP_GUARD,
+      useClass: AuthGuard,
+    },
+  ],
   exports: [AppService],
 })
 export class AppModule {}
