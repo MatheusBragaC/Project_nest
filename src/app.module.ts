@@ -37,11 +37,9 @@ import { PixController } from './pix/pix.controller';
         from: '"nest-modules" <meghan94@ethereal.email>',
       },
       template: {
-        dir: __dirname + '/templates',
+        dir: join(process.cwd(), 'dist', 'templates'),
         adapter: new PugAdapter(),
-        options: {
-          strict: true,
-        },
+        options: { strict: true },
       },
     }),
   ],
@@ -56,9 +54,7 @@ import { PixController } from './pix/pix.controller';
     {
       provide: 'MERCADO_PAGO_ACCESS_TOKEN',
       useFactory: (configService: ConfigService) =>
-        configService.get(
-          'APP_USR-4212527076103591-022114-c47f6f3fac8950949d6d85e37ff0f7aa-1723802760',
-        ),
+        configService.get('MERCADO_PAGO_ACCESS_TOKEN'),
       inject: [ConfigService],
     },
   ],
