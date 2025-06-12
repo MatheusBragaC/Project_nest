@@ -8,7 +8,6 @@ import { Usuario } from '@prisma/client';
 import { PrimaService } from 'src/prisma/prisma.service';
 import { AuthRegisterDTO } from './dto/auth.register.dto';
 import { UserService } from 'src/user/user.service';
-import { MailerService } from '@nestjs-modules/mailer';
 
 @Injectable()
 export class AuthService {
@@ -19,7 +18,6 @@ export class AuthService {
     private readonly jwtService: JwtService,
     private readonly prisma: PrimaService,
     private readonly userService: UserService,
-    private readonly mailer: MailerService,
   ) {}
 
   createToken(user: Usuario) {
@@ -93,15 +91,6 @@ export class AuthService {
         audience: this.audicente,
       },
     );
-    await this.mailer.sendMail({
-      subject: 'Recuperação de senha',
-      to: 'joao@HttpCode.com.br',
-      template: 'forget',
-      context: {
-        name: 'user.name',
-        token: 'http://localhost',
-      },
-    });
 
     return true;
   }
