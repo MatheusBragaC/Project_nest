@@ -15,8 +15,9 @@ import { PixController } from './pix/pix.controller';
 @Module({
   imports: [
     ServeStaticModule.forRoot({
+      // Corrigido para evitar duplicação do diretório "dist"
       rootPath: join(__dirname, '..', 'public'),
-      exclude: ['/api*'],
+      exclude: ['/api*'], // Excluindo as rotas da API de serem servidas como estáticos
     }),
     forwardRef(() => UserModule),
     forwardRef(() => AuthModule),
