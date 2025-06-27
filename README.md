@@ -111,12 +111,8 @@ npm run build
 - [Pix-utils](https://www.npmjs.com/package/pix-utils)
 
 ---
-
-## 📄 Licença
-MIT
-
 ---
 
 <p align="center">
-  <i>Desenvolvido com 💜 por Matheus Carvalho</i>
+  <i>Desenvolvido por Matheus Carvalho</i>
 </p>
