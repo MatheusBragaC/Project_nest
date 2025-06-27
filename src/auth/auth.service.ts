@@ -5,9 +5,9 @@ import {
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { Usuario } from '@prisma/client';
-import { PrimaService } from 'src/prisma/prisma.service';
+import { PrimaService } from '../prisma/prisma.service';
 import { AuthRegisterDTO } from './dto/auth.register.dto';
-import { UserService } from 'src/user/user.service';
+import { UserService } from '../user/user.service';
 
 @Injectable()
 export class AuthService {

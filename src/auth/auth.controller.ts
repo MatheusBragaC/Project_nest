@@ -15,12 +15,12 @@ import { AuthRegisterDTO } from './dto/auth.register.dto';
 import { AuthForgetDTO } from './dto/auth.forget.dto';
 import { AuthResetDTO } from './dto/auth.reset.dto';
 import { AuthService } from './auth.service';
-import { AuthGuard } from 'src/guards/auth.guard';
-import { User } from 'src/decorators/user.decorator';
+import { AuthGuard } from '../guards/auth.guard';
+import { User } from '../decorators/user.decorator';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { join } from 'path';
-import { FileService } from 'src/file/file.service';
-import { Public } from 'src/decorators/public.decorator';
+import { FileService } from '../file/file.service';
+import { Public } from '../decorators/public.decorator';
 
 @Public()
 @Controller('auth')
