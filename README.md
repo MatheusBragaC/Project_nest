@@ -83,3 +83,56 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+
+## Funcionalidades Principais
+
+### Autenticação e Usuários
+- **Cadastro de usuário:** `POST /auth/register` e `POST /users/register`
+- **Login com JWT:** `POST /auth/login`
+- **Recuperação de senha:** `POST /auth/forget` e `POST /auth/reset`
+- **Listagem de usuários:** `GET /users` (apenas Admin)
+- **Detalhe de usuário:** `GET /users/:id`
+- **Atualização total/parcial:** `PUT /users/:id` e `PATCH /users/:id`
+- **Exclusão de usuário:** `DELETE /users/:id`
+- **Upload de foto de perfil:** `POST /auth/photo` (autenticado)
+
+### Pix
+- **Geração de QR Code Pix:** `POST /pix/gerar`
+  - Envie `chavePix`, `valor` e `descricao` para receber o código copia-e-cola e o QR code em base64.
+
+### Segurança e Middleware
+- **Proteção de rotas com JWT:** Guardas de autenticação e roles (`AuthGuard`, `RoleGuard`)
+- **Controle de acesso por perfil:** Decorator `@Roles` para restringir endpoints a Admins, por exemplo.
+- **Validação de ID:** Middleware para garantir que IDs de usuário são válidos.
+- **Rate limiting:** Proteção contra abuso de requisições.
+- **CORS configurado para frontend Vercel.**
+
+### Outros recursos
+- **Logging de requisições:** Interceptor para logar tempo de execução e URL.
+- **Serviço de e-mail (Mailer):** Pronto para integração.
+- **Configuração via .env:** Suporte a variáveis de ambiente.
+
+---
+
+## Exemplos de Endpoints
+
+```http
+POST /auth/register
+POST /auth/login
+POST /auth/forget
+POST /auth/reset
+POST /auth/photo
+
+POST /users/register
+GET /users
+GET /users/:id
+PUT /users/:id
+PATCH /users/:id
+DELETE /users/:id
+
+POST /pix/gerar
+```
+
+---
+
+Para mais detalhes, consulte os controllers e serviços no código fonte.
