@@ -2,7 +2,9 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 
-export async function bootstrap() {
+let cachedServer;
+
+async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.setGlobalPrefix('api');
   app.useGlobalPipes(new ValidationPipe());
@@ -11,6 +13,20 @@ export async function bootstrap() {
     credentials: true,
   });
   return app;
+}
+
+async function bootstrapServer() {
+  if (!cachedServer) {
+    const app = await bootstrap();
+    await app.init();
+    cachedServer = app.getHttpAdapter().getInstance();
+  }
+  return cachedServer;
+}
+
+export default async function handler(req, res) {
+  const server = await bootstrapServer();
+  server(req, res);
 }
 
 // Local: só inicia servidor se não for produção
